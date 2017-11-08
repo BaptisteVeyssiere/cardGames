@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <StartupObject></StartupObject>
+    <RuntimeIdentifiers>win10-x64;win7-x86</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>obj\Release\win10-x64\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetty.Codecs.Protobuf" Version="0.4.7" />
+    <PackageReference Include="DotNetty.Common" Version="0.4.7" />
+    <PackageReference Include="DotNetty.Handlers" Version="0.4.7" />
+    <PackageReference Include="DotNetty.Transport" Version="0.4.7" />
+    <PackageReference Include="Google.Protobuf" Version="3.4.1" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.4.0" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd $(ProjectDir)\..\protoc &amp;&amp; protoc.exe -I=. --csharp_out=$(ProjectDir) Command.proto" />
+  </Target>
+
+</Project>

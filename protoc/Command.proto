@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package command;
+
+option csharp_namespace = "ProtobufCommand";
+
+message Command {
+	string request = 1;
+}
