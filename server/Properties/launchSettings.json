@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "server": {
-      "commandName": "Project",
-      "commandLineArgs": "4000"
-    }
-  }
-}
