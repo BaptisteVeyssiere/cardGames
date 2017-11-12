@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5B61954-90E3-417E-B8B7-72D8D217DE5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>server.Tests</RootNamespace>
+    <AssemblyName>server.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetty.Common, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\server\bin\Debug\DotNetty.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetty.Transport, Version=0.4.7.0, Culture=neutral, PublicKeyToken=bc13ca065fa06c29, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\server\bin\Debug\DotNetty.Transport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ExtendedReflection.Reasoning, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Pex.Framework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\server\server.csproj">
+      <Project>{B393B525-5B67-4666-9B7B-5243761CB121}</Project>
+      <Name>server</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BidManagerTest.Constructor.g.cs">
+      <DependentUpon>BidManagerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BidManagerTest.cs" />
+    <Compile Include="BidManagerTest.GetBid.g.cs">
+      <DependentUpon>BidManagerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BidManagerTest.HandleBid.g.cs">
+      <DependentUpon>BidManagerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BidManagerTest.Init.g.cs">
+      <DependentUpon>BidManagerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BidManagerTest.IsBidding.g.cs">
+      <DependentUpon>BidManagerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.AddCommand.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.ClearCards.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.Constructor.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.cs" />
+    <Compile Include="PlayerTest.DisplayCards.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GetCard.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GetChannel.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GetCommand.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GetCommandNbr.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GetConnection.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.GiveCard.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.HasBetterCard.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.HasColorInHand.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.RemoveCard.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.SendCommand.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTest.SetConnection.g.cs">
+      <DependentUpon>PlayerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.cs" />
+    <Compile Include="ProgramTest.Main.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\PexAssemblyInfo.cs" />
+    <Compile Include="SalonTest.Constructor.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.cs" />
+    <Compile Include="SalonTest.DestroySalon.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.GetClientNbr.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.GetCommand.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.GetCommandNbr.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.GetPlayer.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.PlayGame.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonTest.SendCommand.g.cs">
+      <DependentUpon>SalonTest.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

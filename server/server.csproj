@@ -130,10 +130,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BidCalculator.cs" />
+    <Compile Include="BidManager.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="Deck.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundCalculator.cs" />
     <Compile Include="Salon.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ServerHandler.cs" />

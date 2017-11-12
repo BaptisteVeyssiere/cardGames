@@ -7,7 +7,7 @@
     using DotNetty.Transport.Channels.Sockets;
     using System.Collections.Concurrent;
 
-    class ClientHandler : SimpleChannelInboundHandler<ProtobufCommand.Command>
+    public class ClientHandler : SimpleChannelInboundHandler<ProtobufCommand.Command>
     {
         private volatile IChannel channel;
         private BlockingCollection<ProtobufCommand.Command> answer = new BlockingCollection<ProtobufCommand.Command>();

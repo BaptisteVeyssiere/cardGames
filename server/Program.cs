@@ -7,18 +7,15 @@
     using DotNetty.Codecs.Protobuf;
     using System.Diagnostics;
 
-    class Program
+    public class Program
     {
-        static async System.Threading.Tasks.Task RunClientAsync(string[] args)
+        public static async System.Threading.Tasks.Task RunClientAsync(string[] args)
         {
-            int port;
-
-            if (args.Length != 1)
+            if (args == null || args.Length != 1 || !int.TryParse(args[0], out int port))
             {
                 System.Console.WriteLine("Usage: port");
                 return;
             }
-            port = int.Parse(args[0]);
             MultithreadEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
             MultithreadEventLoopGroup workerGroup = new MultithreadEventLoopGroup();
             try
@@ -49,6 +46,16 @@
                 System.Console.WriteLine("Server closed gracefully");
             }
         }
-        public static void Main(string[] args) => RunClientAsync(args).Wait();
+        public static void Main(string[] args)
+        {
+            try
+            {
+                RunClientAsync(args).Wait();
+            } catch (System.Exception e)
+            {
+                int line = (new StackTrace(e, true)).GetFrame(0).GetFileLineNumber();
+                System.Console.WriteLine("Error :" + e.Message + "on line " + line);
+            }
+        }
     }
 }

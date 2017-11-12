@@ -35,8 +35,13 @@
                     {
                         try
                         {
-                            // Play Game here
-                        } catch (System.Exception)
+                            if (salons[i].PlayGame())
+                            {
+                                salons[i].DestroySalon();
+                                salons.RemoveAt(i);
+                            }
+                        }
+                        catch (System.Exception)
                         {
                             salons[i].DestroySalon();
                             salons.RemoveAt(i);

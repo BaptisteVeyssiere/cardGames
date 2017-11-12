@@ -5,33 +5,45 @@
     using DotNetty.Transport.Channels.Sockets;
     using DotNetty.Codecs.Protobuf;
 
-    class Program
+    public class Program
     {
         private static ClientHandler handler = null;
         public static void ThreadLoop()
         {
-            while (handler.GetStatus())
+            try
             {
-                if (!handler.GetStatus())
-                    return;
-                if (handler.GetCommandSize() > 0)
-                    System.Console.WriteLine(handler.GetCommand());
-                System.Threading.Thread.Sleep(100);
+                if (handler == null)
+                {
+                    throw new System.Exception("Object handler is not set");
+                }
+                string line = null;
+                while (handler.GetStatus())
+                {
+                    line = System.Console.ReadLine();
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        if (line == "quit" || !handler.GetStatus())
+                        {
+                            break;
+                        }
+                        handler.SendCommand(line);
+                    }
+                    System.Threading.Thread.Sleep(100);
+                }
+            } catch (System.Exception e)
+            {
+                System.Console.WriteLine("Error encountered: " + e.Message);
             }
         }
 
-        static async System.Threading.Tasks.Task RunClientAsync(string[] args)
+        public static async System.Threading.Tasks.Task RunClientAsync(string[] args)
         {
-            string host = null;
-            string  line = null;
-
-            if (args.Length != 2)
+            if (args == null || args.Length != 2)
             {
                 System.Console.WriteLine("Usage: host port");
                 return;
             }
-
-            host = args[0];
+            string host = args[0];
             if (!int.TryParse(args[1], out int port))
             {
                 System.Console.WriteLine("Bad int conversion");
@@ -57,20 +69,27 @@
                 handler = (ClientHandler)ch.Pipeline.Last();
                 System.Threading.Thread mythread = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadLoop));
                 mythread.Start();
-                while (handler.GetStatus())
+                try
                 {
-                    line = System.Console.ReadLine();
-                    if (!string.IsNullOrEmpty(line))
+                    if (handler == null)
                     {
-                        if (line == "quit" || !handler.GetStatus())
-                        {
-                            break;
-                        }
-                        handler.SendCommand(line);
+                        throw new System.Exception("Object handler is not set");
                     }
-                    System.Threading.Thread.Sleep(100);
+                    while (handler.GetStatus())
+                    {
+                        if (!handler.GetStatus())
+                            return;
+                        if (handler.GetCommandSize() > 0)
+                            System.Console.WriteLine(handler.GetCommand());
+                        System.Threading.Thread.Sleep(100);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    System.Console.WriteLine("Error encountered: " + e.Message);
                 }
                 await ch.CloseAsync();
+                mythread.Abort();
             } catch (System.Exception e)
             {
                 System.Console.WriteLine("Error encountered: " + e.Message);
@@ -78,9 +97,19 @@
             {
                 await group.ShutdownGracefullyAsync();
                 System.Console.WriteLine("Client closed gracefully");
+                System.Environment.Exit(0);
             }
         }
 
-        public static void Main(string[] args) => RunClientAsync(args).Wait();
+        public static void Main(string[] args)
+        {
+            try
+            {
+                RunClientAsync(args).Wait();
+            } catch (System.Exception e)
+            {
+                System.Console.WriteLine("Error encountered: " + e.Message);
+            }
+        }
     }
 }
